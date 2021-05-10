@@ -17,15 +17,15 @@ RUN apt-get install -y gosu
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 
-# ARG USERNAME=public-user
-# ARG GROUPNAME=public-user
-# ARG UID=228
-# ARG GID=228
-# ARG PASSWORD=public-user
-# RUN groupadd -g $GID $GROUPNAME && \
-#     useradd -m -s /bin/bash -u $UID -g $GID -G sudo $USERNAME && \
-#     echo $USERNAME:$PASSWORD | chpasswd && \
-#     echo "$USERNAME   ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+ARG USERNAME=public-user
+ARG GROUPNAME=public-user
+ARG UID=228
+ARG GID=228
+ARG PASSWORD=public-user
+RUN groupadd -g $GID $GROUPNAME && \
+    useradd -m -s /bin/bash -u $UID -g $GID -G sudo $USERNAME && \
+    echo $USERNAME:$PASSWORD | chpasswd && \
+    echo "$USERNAME   ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 ENTRYPOINT ["entrypoint.sh"]
 # USER $USERNAME

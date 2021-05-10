@@ -9,7 +9,7 @@ GROUP_ID=${LOCAL_GID:-1000}
 
 echo $@
 
-useradd -u $USER_ID -o -m public-user
+usermod -u $USER_ID -o public-user
 groupmod -g $GROUP_ID public-user
 
 # Then exec the container's main process (what's set as CMD in the Dockerfile).

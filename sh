@@ -7,5 +7,6 @@ exec $base $*
 # setup
 # ./sh rails new . --force --no-deps --database=mysql --skip-test --webpacker
 # docker-compose build
+# config/database.ymlを更新
 # ./sh rake db:create
 # docker-compose up
